@@ -1,16 +1,76 @@
-# React + Vite
+# 🕹️ Tienda NextUp Games
+Aplicación web sencilla desarrollada con React y Vite.js que simula un carrito de compras básico. Permite a los usuarios explorar una lista de juegos y añadirlos a la bolsa de compras.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Demo
+Puedes ver la aplicación en funcionamiento aquí:
 
-Currently, two official plugins are available:
+🔗 [Github Pages](https://nisiara.github.io/dfe1_exp3_s3_npm/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+## ✨ Características Principales
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+* **Catálogo de Juegos**: Explora una selección de títulos con información relevante como título, plataforma, descripción y precios.
+* **Filtro**: El usuario puede elegir que tipo de juego desea visualizar por los criterios: 'Más buscados', 'Destacados', 'Más vendidos' 
+* **Diseño Responsive**: La interfaz se adapta perfectamente a cualquier dispositivo (móvil, tablet, escritorio).
+* **Selección de vista**: El catálogo tiene dos modos de visualización: Grilla y Columna.
+* **Emulación flujo de compra**: Permite a los usuarios agregar juegos a la bolsa de compras, este calcula y muestra el monto total a pagar sumando los precios de todos los productos. También se pueden eliminar de la bolsa.
+* **Botón 'Agregar a la bolsa' sensible al estado**: Una vez añadido un juego a la bolsa, el botón cambia de mensaje para mejorar la usabilidad.
+* **Renderizado Condicional**: Dependiendo de los distintos estados que maneja la aplicación, esta muestra distintas vistas,componentes y/o clases.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tecnologías Utilizadas
+
+* **React**: Biblioteca de JavaScript para construir interfaces de usuario.
+* **Vite.js**: Herramienta de construcción rápida y ligera.
+* **NPM**: Como gestor de paquetes y bundler para un desarrollo eficiente.
+* **JSX/Sass**: Estructura y estilos.
+* **Bootstrap**: Libreria CSS
+
+
+## ⚙️ Instalación
+Sigue estos pasos para obtener una copia local del proyecto en funcionamiento.
+
+### Prerrequisitos
+- Nodejs
+- NPM
+
+
+### Pasos
+
+**1. Clona el repositorio:**
+
+  ```bash
+  git clone https://github.com/nisiara/dfe1_exp3_s3_npm.git
+  cd dfe1_exp3_s3_npm
+  ```
+
+**2. Instala las dependencias usando NPM:**
+
+```bash
+npm install
+```
+
+**3. Ejecuta el proyecto en modo desarrollo:**
+
+```bash
+npm run dev
+```
+
+El servidor de desarrollo se iniciará y la aplicación estará disponible en `http://localhost:5173/` (o el puerto que indique Vite).
+
+
+## 🚀 Ejecución
+```bash
+npm run build
+```
+```bash
+npm run deploy
+```
+
+
+## ✍️ Autor
+Nicolás Silva A. | Desarrollo Front End 1
+
+
+
+
