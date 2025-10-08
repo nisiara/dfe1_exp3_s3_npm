@@ -1,0 +1,24 @@
+
+.app-container 
+  display: grid
+  padding: 20px
+  gap: 24px
+  grid-template-rows: auto 1fr
+  grid-template-areas: "header" "main" "aside"
+  min-height: 100vh
+  max-width: 1200px
+  margin: auto
+  @media screen and (min-width: 992px) 
+    grid-template-columns: 65% 35%
+    grid-template-areas: "header header" "main aside"
+
+.title 
+  margin-bottom: 16px
+  display: flex
+  align-items: center
+  h4
+    display: flex
+    align-items: center
+    gap: 8px
+    span
+      font-size: var(--text-xxl)
