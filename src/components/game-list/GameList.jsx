@@ -52,12 +52,19 @@ const GameList = ({addGameToCart, cartGames, changeFilter}) => {
     setCurrentLayout(layout)
   }
 
+  //Objeto para traducir la propiedad 'tag' que proviene del fetch
+  const traductorTitulo = {
+    featured: 'destacados',
+    'best seller': 'más vendidos',
+    favorite: 'favoritos'
+  }
+
   //Retorna el jsx que se encarga de renderizar la lista de juegos.
   return ( 
     <>
       <main>
         <div className='title'>
-          <h4><span>🕹️</span>Lista de juegos</h4>
+          <h4><span>🕹️</span>Lista de {!changeFilter ? 'todos los juegos' : ` juegos ${traductorTitulo[changeFilter]} `}</h4>
           <ChangeLayout changeLayout={handleLayoutChange} currentLayout={currentLayout}/>
         </div>
         <div className={currentLayout === 'grid' ? 'game-list' : 'game-list game-list--row'}>

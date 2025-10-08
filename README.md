@@ -1,14 +1,12 @@
 # 🕹️ Tienda NextUp Games
 Aplicación web sencilla desarrollada con React y Vite.js que simula un carrito de compras básico. Permite a los usuarios explorar una lista de juegos y añadirlos a la bolsa de compras.
 
-## Demo
+## 🎬 Demo
 Puedes ver la aplicación en funcionamiento aquí:
-
-🔗 [Github Pages](https://nisiara.github.io/dfe1_exp3_s3_npm/)
+[**Github Pages**](https://nisiara.github.io/dfe1_exp3_s3_npm/)
 
 
 ## ✨ Características Principales
-
 * **Catálogo de Juegos**: Explora una selección de títulos con información relevante como título, plataforma, descripción y precios.
 * **Filtro**: El usuario puede elegir que tipo de juego desea visualizar por los criterios: 'Más buscados', 'Destacados', 'Más vendidos' 
 * **Diseño Responsive**: La interfaz se adapta perfectamente a cualquier dispositivo (móvil, tablet, escritorio).
@@ -38,23 +36,21 @@ Sigue estos pasos para obtener una copia local del proyecto en funcionamiento.
 ### Pasos
 
 **1. Clona el repositorio:**
-
   ```bash
   git clone https://github.com/nisiara/dfe1_exp3_s3_npm.git
   cd dfe1_exp3_s3_npm
   ```
 
 **2. Instala las dependencias usando NPM:**
-
 ```bash
 npm install
 ```
 
 **3. Ejecuta el proyecto en modo desarrollo:**
-
 ```bash
 npm run dev
 ```
+
 
 El servidor de desarrollo se iniciará y la aplicación estará disponible en `http://localhost:5173/` (o el puerto que indique Vite).
 

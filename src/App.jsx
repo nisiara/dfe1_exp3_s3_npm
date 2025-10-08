@@ -7,7 +7,6 @@ import ContactForm from './components/contact-form/ContactForm'
 
 const App = () => {
   
-
   /*
   La acción de agregar a la bolsa esta en el componente Game y este debe 'viajar' hacia el componente 'Cart'
   por lo tanto fijamos el estado en el componente App, ya que el estado debe estar en el componente ancestro 
@@ -41,10 +40,13 @@ const App = () => {
     setCartGames(updatedCart)
   }
 
+  //useState que vigila el estado de los filtros de juegos que provienen del componente Header
+  //para enviarlo al componente GameList
   const [filter, setFilter] = useState('')
 
-  function changeGameFilter(juego){
-    setFilter(juego)
+  //Función que recibe el filtro desde el componente Header
+  function changeGameFilter(filter){
+    setFilter(filter)
   }
 
   return (
