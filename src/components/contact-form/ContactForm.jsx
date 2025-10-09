@@ -14,7 +14,7 @@ const ContactForm = () => {
   }
 
   //Creamos un estado para guardar la validación de cada input
-  const [validation, setValidation] = useState({
+  const [validationInput, setValidationInput] = useState({
     name: false,
     lastName: false,
     email: false,
@@ -44,7 +44,7 @@ const ContactForm = () => {
 
     if (validationPatterns[name]) {
       const isValid = validationPatterns[name].test(value)
-      setValidation(prevValidation => ({
+      setValidationInput(prevValidation => ({
         ...prevValidation,
         [name]: isValid
       }))
@@ -73,20 +73,19 @@ const ContactForm = () => {
   }
 
 
+  const [validForm, setValidForm] = useState(false)
+
   //Función handler que se ejecuta al pinchar el botón enviar del formulario
   //Válida que todos los valores del objeto 'validation' sean true.
   function handleSubmition(event){
     event.preventDefault()
-    const validForm = Object.values(validation).every(isValid => isValid === true)
-    if (!validForm) {
-      alert('Por favor, completa todos los campos correctamente antes de enviar.')
-      
-    }
-     alert('Mensaje enviado correctamente')
+    setValidForm( Object.values(validationInput).every(isValid => isValid === true))
+    
     console.log('Todos los datos formulario', formObject)
   }
 
   return (
+    <>
     <main className='contact'>
       <h2>✍️ Contacto</h2>
       <p>Si tienes alguna pregunta o consulta, no dudes en ponerte en contacto con nosotros a través del siguiente formulario:</p>
@@ -99,22 +98,22 @@ const ContactForm = () => {
             <div className="contact__input">
               <label htmlFor="name">Nombre:</label>
               <input id="name" name="name" required autoComplete="true" onChange={handleOnChange} onBlur={handleOnBlur} />
-              {touched.name && !validation.name && <small className="contact__alert">El nombre ingresado no cumple con el formato requerido.</small>}
+              {touched.name && !validationInput.name && <small className="contact__alert">El nombre ingresado no cumple con el formato requerido.</small>}
             </div>
             <div className="contact__input">
               <label htmlFor="last-name">Apellido:</label>
               <input id="last-name" name="lastName" required onChange={handleOnChange} onBlur={handleOnBlur} />
-               {touched.lastName && !validation.lastName && <small className="contact__alert">El apellido ingresado no cumple con el formato requerido.</small>}
+               {touched.lastName && !validationInput.lastName && <small className="contact__alert">El apellido ingresado no cumple con el formato requerido.</small>}
             </div>
             <div className="contact__input">
               <label htmlFor="email">Correo electrónico:</label>
               <input id="email" type="email" name="email" required autoComplete="true" onChange={handleOnChange} onBlur={handleOnBlur} />
-               {touched.email && !validation.email && <small className="contact__alert">El correo ingresado no cumple con el formato requerido.</small>}      
+               {touched.email && !validationInput.email && <small className="contact__alert">El correo ingresado no cumple con el formato requerido.</small>}      
             </div>
             <div className="contact__input">
               <label htmlFor="phone">Teléfono:</label>
               <input id="phone" type="tel" name="phone" autoComplete="true" onChange={handleOnChange} onBlur={handleOnBlur} />
-              {touched.phone && !validation.phone && <small className="contact__alert">El número ingresado no cumple con el formato requerido.</small>}
+              {touched.phone && !validationInput.phone && <small className="contact__alert">El número ingresado no cumple con el formato requerido.</small>}
             </div>
           </fieldset>
         </div>
@@ -130,18 +129,37 @@ const ContactForm = () => {
                 <option value="sugerencia">Sugerencia</option>
                 <option value="reclamo">Reclamo</option>
               </select>
-               {touched.subject && !validation.subject && <small className="contact__alert">Debes seleccionar un asunto</small>}
+               {touched.subject && !validationInput.subject && <small className="contact__alert">Debes seleccionar un asunto</small>}
             </div>
             <div className="contact__input">
               <label htmlFor="message">Mensaje:</label>
               <textarea id="message" name="message" rows="8" required onChange={handleOnChange} onBlur={handleOnBlur}></textarea>
-               {touched.message && !validation.message && <small className="contact__alert">El mensaje debe tener al menos 10 caracteres.</small>}
+               {touched.message && !validationInput.message && <small className="contact__alert">El mensaje debe tener al menos 10 caracteres.</small>}
             </div>
-            <button className="contact__submit">Enviar</button>
+            <button className="contact__submit" data-bs-toggle="modal" data-bs-target="#modal-submit">Enviar</button>
+            
           </fieldset>
         </div>
       </form>
     </main>
+
+    <div className="modal fade" id="modal-submit" tabIndex="-1" aria-labelledby="modalSubmitLabel" aria-hidden="true">
+      <div className="modal-dialog">
+        <div className="modal-content">
+          <div className="modal-header">
+          
+            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div className="modal-body">
+            {validForm ? 'ok' : 'en la b'}
+          </div>
+          <div className="modal-footer">
+            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    </>
   )
 }
  

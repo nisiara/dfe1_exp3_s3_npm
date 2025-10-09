@@ -3,26 +3,53 @@ header
   padding: 24px 0
   display: flex
   align-items: center
-  h1 
+  h1
+    margin-bottom: 0 
     span
       font-size: large
       position: absolute
       z-index: -1
+    img
+      @media screen and ( max-width: 575px )
+        width: 136px
+        height: auto
 
-nav
-  margin-left: auto
   ul
-    display: flex
-    gap: 1rem
     list-style: none
+    @media screen and ( min-width: 576px  )
+      gap: 1rem
+      display: flex
+    justify-content: space-around
+    @media screen and ( min-width: 992px  )
+      margin-left: auto
 
-  a,
-  button
-    display: block
-    cursor: pointer
-    text-decoration: none
-    color: inherit
-    font-size: 0.796rem
-    font-weight: 500
-    background: none
-    border: 0
+    button
+      display: block
+      cursor: pointer
+      text-decoration: none
+      color: inherit
+      font-size: 0.796rem
+      font-weight: 500
+      background: none
+      border: 0
+      @media screen and ( max-width: 768px )
+        width: 100%
+        text-align: center
+        padding: 6px
+        
+        
+        
+.navbar-collapse
+  @media screen and ( max-width: 991px )
+    padding: 20px 0
+    
+.navbar-toggler
+  padding: 12px
+  background: var(--color-text)
+  &:focus
+    outline: none
+    box-shadow: none
+.navbar-toggler-icon
+  font-size: var(--text-xs)
+  filter: brightness(1) invert(1) 
+  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")

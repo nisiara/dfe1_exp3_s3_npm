@@ -3,10 +3,10 @@ import { useEffect, useState} from 'react'
 import Game from '../game/Game';
 import ChangeLayout from '../change-layout/ChangeLayout';
 
-//GameList recibe 2 props. 1. La función que pasa al componente Game
-//con el objetivo de recuperar el objeto que se quiere agregar al carro
-//2. La lista de juegos que está en el carro, para verificar si el juego
-//a comprar ya existe en el carro.
+//GameList recibe 3 props. 
+//1. La función que pasa al componente Game con el objetivo de recuperar el objeto que se quiere agregar al carro
+//2. La lista de juegos que está en el carro, para verificar si el juego a comprar ya existe en el carro.
+//3. El filtro para mostrar los juegos correspondientes
 const GameList = ({addGameToCart, cartGames, changeFilter}) => {
 
 
