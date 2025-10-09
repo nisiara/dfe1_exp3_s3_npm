@@ -25,6 +25,7 @@
 .game__description
   margin-bottom: 6px
   font-size: var(--text-xxs)
+  line-height: normal
   height: 78px
 
 .game__platform
@@ -46,12 +47,10 @@
   font-size: var(--text-xs)
   font-weight: 600
 
-
 .game__price--outdated
   font-size: var(--text-xxs)
   color: #8494c4
   text-decoration: line-through
-
 
 .game__action
   margin-top: .5rem
@@ -83,9 +82,11 @@
 .game-list--row
   .game
     display: flex
-    flex-basis: calc(100% - 1rem)
-    @media screen and ( min-width: 767px )
-      flex-basis: calc(50% - 1rem)
+    flex-basis: 100%
+    @media screen and ( min-width: 576px )
+      flex-basis: calc(50% - .5rem)
+    @media screen and ( min-width: 992px )
+      flex-basis: calc((100% / 3) - .7rem)
       
   .game__image
     margin: 0
@@ -106,5 +107,4 @@
     margin: 0
     gap: 8px
   .game__action
-    
     padding: .5rem

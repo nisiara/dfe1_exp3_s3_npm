@@ -8,9 +8,6 @@
   min-height: 100vh
   max-width: 1200px
   margin: auto
-  @media screen and (min-width: 992px) 
-    grid-template-columns: 65% 35%
-    grid-template-areas: "header header" "main aside"
 
 .title 
   margin-bottom: 16px
@@ -21,5 +18,14 @@
     margin-bottom: 0
     align-items: center
     gap: 8px
+    font-weight: 800
     span
       font-size: var(--text-xxl)
+
+.offcanvas.offcanvas-end
+  border: 0
+
+.offcanvas-backdrop
+  background: var(--color-primary)
+  &.show
+    opacity: .7

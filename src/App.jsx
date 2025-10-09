@@ -53,11 +53,19 @@ const App = () => {
     //Simulamos la navegación entre páginas con el estado de filter y renderizamos condicionalmente
     //el formulario o la lista de juegos
     <div className='app-container'>
-      <Header changeGameFilter={changeGameFilter}/>
+      <Header changeGameFilter={changeGameFilter} cartGames={cartGames.length}/>
       {filter === 'contact-form' ? <ContactForm/> : (
         <>
           <GameList addGameToCart={addGameToCart} cartGames={cartGames} changeFilter={filter} />
-          <Cart games={cartGames} removeGame={removeGameFromCart}/>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-cart" aria-labelledby="offcanvasCartLabel">
+            <div class="offcanvas-header">
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <Cart games={cartGames} removeGame={removeGameFromCart}/>
+            </div>
+          </div>
+         
         </>
       )}
     </div>

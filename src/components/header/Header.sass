@@ -37,15 +37,18 @@ header
         text-align: center
         padding: 6px
         
-        
-        
+.navbar-expand-lg        
+  gap: 16px
+
 .navbar-collapse
   @media screen and ( max-width: 991px )
     padding: 20px 0
     
 .navbar-toggler
-  padding: 12px
+  padding: 8px
+  border: 0
   background: var(--color-text)
+  margin-left: auto
   &:focus
     outline: none
     box-shadow: none
@@ -53,3 +56,23 @@ header
   font-size: var(--text-xs)
   filter: brightness(1) invert(1) 
   background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2833, 37, 41, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")
+
+.navbar-cart-trigger
+  background: none
+  border: 0
+  span
+    font-size: var(--text-xxl)
+    margin-right: -6px
+  small
+    position: relative
+    top: -20px
+    display: inline-block
+    background: #fc55c5
+    color: #fff
+    font-weight: 400
+    border-radius: 50%
+    width: 16px
+    height: 16px
+    text-align: center
+    font-size: 55%
+    line-height: 15px

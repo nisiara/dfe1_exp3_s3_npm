@@ -118,8 +118,9 @@ const ContactForm = () => {
   return (
     <>
     <main className='contact'>
-      <h2>✍️ Contacto</h2>
-      <p>Si tienes alguna pregunta o consulta, no dudes en ponerte en contacto con nosotros a través del siguiente formulario:</p>
+      <div className="title">
+        <h4>✍️ Contacto</h4>
+      </div>
       
       {/* Usamos el atributo noValidate para evitar las validadiones de HTML5 */}
       <form className="row" name="contact-form" onSubmit={handleSubmition} noValidate>

@@ -1,6 +1,6 @@
 import './Header.sass'
 
-const Header = ({changeGameFilter}) => {
+const Header = ({changeGameFilter, cartGames}) => {
 
   //Función handler que envia el filtro hacia el componente App
   //para que luego desde allí lo envie al componente GameList y filtre la lista
@@ -45,6 +45,10 @@ const Header = ({changeGameFilter}) => {
             <li><button onClick={() => handleFilterView('contact-form')}>Contáctanos</button></li>
           </ul>
         </nav>
+        <button className="navbar-cart-trigger" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-cart" aria-controls="offcanvasCart">
+          <span>🛍️</span>
+          <small>{cartGames}</small>
+        </button>
       
     </header>
   )

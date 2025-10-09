@@ -43,12 +43,6 @@ body{
 main{
   grid-area: main;
 }
-@media screen and (min-width: 992px){
-  main{
- 
-    padding-right: 24px;
-  }
-}
 
 h6 { font-size: var(--text-xs); }
 h5 { font-size: var(--text-sm); }
