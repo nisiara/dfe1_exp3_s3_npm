@@ -55,19 +55,16 @@ const App = () => {
     <div className='app-container'>
       <Header changeGameFilter={changeGameFilter} cartGames={cartGames.length}/>
       {filter === 'contact-form' ? <ContactForm/> : (
-        <>
-          <GameList addGameToCart={addGameToCart} cartGames={cartGames} changeFilter={filter} />
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas-cart" aria-labelledby="offcanvasCartLabel">
-            <div class="offcanvas-header">
-              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-              <Cart games={cartGames} removeGame={removeGameFromCart}/>
-            </div>
-          </div>
-         
-        </>
+        <GameList addGameToCart={addGameToCart} cartGames={cartGames} changeFilter={filter} />
       )}
+      <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvas-cart" aria-labelledby="offcanvasCartLabel">
+        <div className="offcanvas-header">
+          <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div className="offcanvas-body">
+          <Cart games={cartGames} removeGame={removeGameFromCart}/>
+        </div>
+      </div>
     </div>
     
   )

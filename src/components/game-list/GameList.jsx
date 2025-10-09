@@ -9,7 +9,6 @@ import ChangeLayout from '../change-layout/ChangeLayout';
 //3. El filtro para mostrar los juegos correspondientes
 const GameList = ({addGameToCart, cartGames, changeFilter}) => {
 
-
   //Agregamos el hook useState() para guardar el estado de la lista de juegos
   //que cargaremos a través del hook useEffect()
   const[games, setGames] = useState([]);
@@ -17,30 +16,32 @@ const GameList = ({addGameToCart, cartGames, changeFilter}) => {
   //Usamos useEffect porque para interactuar co el estado necesitamos realizar
   //un 'efecto secundario' que no es renderizar elementos sino, en este caso, realizar una carga asíncrona
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
+    const abortController = new AbortController();
+    const signal = abortController.signal;
 
-    fetch('data/games.json', {signal: signal})  
-      .then(response => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('data/games.json', { signal });
         if (!response.ok) {
-          throw new Error('Falló la carga de la API');
+          throw new Error(`Error HTTP. Estado: ${response.status}`);
         }
-        return response.json();
-      })
-      .then(games => {
-        setGames(games);
-      })
-      .catch(error => {
-        console.error('Error', error.message);
-      });
+        const result = await response.json();
+        setGames(result);
+      } 
+      catch (error) {
+        if (error.name === 'AbortError') {
+          console.log('Fetch aborted -> clean useEffect');
+        }
+      } 
+    };
 
-    //Agregamos la función de retorno para limpiar useEffect y no existam 'memory leaks'
-    //mejorando el rendimiento
-    return () => {
-      controller.abort();
-    }
+    fetchData();
 
-  }, [])
+    // Aborta la petición fecth, limpiando el efecto evitando 'memory leaks'
+    return () => abortController.abort()
+
+  // El array de dependencias vacio asegura que este efecto solo corre cuando se monta el componente
+  }, []);
 
   const filteredGames = changeFilter ? games.filter( game => game.tag === changeFilter) : games
 

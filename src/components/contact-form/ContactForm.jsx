@@ -5,10 +5,10 @@ const ContactForm = () => {
 
   // Creamos un diccionario con las expresiones regulares que validarán los inputs que ingrese el usuario
   const validationPatterns = {
-    name: /^[a-zA-ZÀ-ÿ\s]{2,}$/,
+    name: /^[a-zA-ZÀ-ÿ\s]{3,}$/,
     lastName: /^[a-zA-ZÀ-ÿ\s]{2,}$/,
     email: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    phone: /^\+\d{11}$/,
+    phone: /^\d{9}$/,
     subject: /^(consulta|sugerencia|reclamo)$/i,
     message: /^[\s\S]{10,}$/
   }
@@ -69,7 +69,6 @@ const ContactForm = () => {
     setFormObject( prevFormData => ({
       ...prevFormData, [name]: value,
     }))
-
   }
 
   const [validForm, setValidForm] = useState(false)
@@ -103,14 +102,15 @@ const ContactForm = () => {
         message: false
       })
 
-      setFormObject({
+      setFormObject( prevFormData => ({
+        ...prevFormData,
         name: '',
         lastName: '',
         email: '',
         phone: '',
         subject: '',
         message: ''
-      })
+      }))
 
     }
   }
@@ -129,17 +129,17 @@ const ContactForm = () => {
             <legend>Información de contacto</legend>
             <div className="contact__input">
               <label htmlFor="name">Nombre:</label>
-              <input id="name" name="name" required autoComplete="true" onChange={handleOnChange} onBlur={handleOnBlur} />
+              <input id="name" name="name" autoComplete="true" onChange={handleOnChange} onBlur={handleOnBlur} />
               {touched.name && !validationInput.name && <small className="contact__alert">El nombre ingresado no cumple con el formato requerido.</small>}
             </div>
             <div className="contact__input">
               <label htmlFor="last-name">Apellido:</label>
-              <input id="last-name" name="lastName" required onChange={handleOnChange} onBlur={handleOnBlur} />
+              <input id="last-name" name="lastName" onChange={handleOnChange} onBlur={handleOnBlur} />
                {touched.lastName && !validationInput.lastName && <small className="contact__alert">El apellido ingresado no cumple con el formato requerido.</small>}
             </div>
             <div className="contact__input">
               <label htmlFor="email">Correo electrónico:</label>
-              <input id="email" type="email" name="email" required autoComplete="true" onChange={handleOnChange} onBlur={handleOnBlur} />
+              <input id="email" type="email" name="email" autoComplete="true" onChange={handleOnChange} onBlur={handleOnBlur} />
                {touched.email && !validationInput.email && <small className="contact__alert">El correo ingresado no cumple con el formato requerido.</small>}      
             </div>
             <div className="contact__input">
@@ -155,7 +155,7 @@ const ContactForm = () => {
             <legend>Mensaje</legend>
             <div className="contact__input">
               <label htmlFor="asunto">Asunto:</label>
-              <select id="asunto" name="subject" required onChange={handleOnChange} onBlur={handleOnBlur}>
+              <select id="asunto" name="subject" onChange={handleOnChange} onBlur={handleOnBlur}>
                 <option value="">-- Selecciona una opción --</option>
                 <option value="consulta">Consulta</option>
                 <option value="sugerencia">Sugerencia</option>
