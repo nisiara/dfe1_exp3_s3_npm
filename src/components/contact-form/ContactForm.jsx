@@ -72,7 +72,6 @@ const ContactForm = () => {
 
   }
 
-
   const [validForm, setValidForm] = useState(false)
 
   //Función handler que se ejecuta al pinchar el botón enviar del formulario
@@ -82,6 +81,38 @@ const ContactForm = () => {
     setValidForm( Object.values(validationInput).every(isValid => isValid === true))
     
     console.log('Todos los datos formulario', formObject)
+  }
+
+  function handleFormReset(){
+    if(validForm){
+      setTouched({
+        name: false,
+        lastName: false,
+        email: false,
+        phone: false,
+        subject: false,
+        message: false
+      })
+
+      setValidationInput({
+        name: false,
+        lastName: false,
+        email: false,
+        phone: false,
+        subject: false,
+        message: false
+      })
+
+      setFormObject({
+        name: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      })
+
+    }
   }
 
   return (
@@ -124,7 +155,7 @@ const ContactForm = () => {
             <div className="contact__input">
               <label htmlFor="asunto">Asunto:</label>
               <select id="asunto" name="subject" required onChange={handleOnChange} onBlur={handleOnBlur}>
-                <option value=""></option>
+                <option value="">-- Selecciona una opción --</option>
                 <option value="consulta">Consulta</option>
                 <option value="sugerencia">Sugerencia</option>
                 <option value="reclamo">Reclamo</option>
@@ -143,19 +174,18 @@ const ContactForm = () => {
       </form>
     </main>
 
-    <div className="modal fade" id="modal-submit" tabIndex="-1" aria-labelledby="modalSubmitLabel" aria-hidden="true">
-      <div className="modal-dialog">
+    <div className="modal fade" id="modal-submit" tabIndex="-1" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="modalSubmitLabel" aria-hidden="true">
+      <div className="modal-dialog modal-dialog-centered">
         <div className="modal-content">
-          <div className="modal-header">
           
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
           <div className="modal-body">
-            {validForm ? 'ok' : 'en la b'}
+            <div className={validForm ? 'contact__message contact__message--success' : 'contact__message contact__message--warning'}>
+              <p>{validForm ? 'Tu mensaje se ha enviado con exito.' : 'Debes ingresar todos los datos del formulario.'}</p>
+            </div>
+            <button type="button" data-bs-dismiss="modal" onClick={handleFormReset}>{validForm ? 'Nos contacremos contigo a la brevedad 😉' : 'Inténtalo nuevamente'}</button>
+            
           </div>
-          <div className="modal-footer">
-            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
+          
         </div>
       </div>
     </div>
